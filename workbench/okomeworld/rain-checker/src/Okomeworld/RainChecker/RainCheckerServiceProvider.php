@@ -18,7 +18,9 @@ class RainCheckerServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->app->bind('rain_checker', function($app){
+			return new RainChecker();
+		});
 	}
 
 	/**
