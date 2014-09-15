@@ -33,6 +33,14 @@ class RainChecker {
 		);
 	}
 
+	/**
+	 * APIにリクエストしてレスポンスを取得する
+	 *
+	 * @param array $coordinates 降水状況を取得したい座標の指定
+	 * @param array $opt         リクエストのクエリストリングに渡す値。詳細は$_default_optionsのコメントを参照。
+	 *
+	 * @return strings APIの返り値。デフォルトはjson形式。
+	 */
 	public function request($coordinates=array(), $opt=array()) {
 		$query_params = array_merge($opt, $this->_default_options);
 
