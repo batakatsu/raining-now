@@ -1,5 +1,8 @@
 <?php namespace Okomeworld\RainChecker;
 
+/**
+ * 今雨降ってるか調べるクラス
+ */
 class RainChecker {
 	
 	# APIキーとか突っ込む
@@ -7,7 +10,7 @@ class RainChecker {
 
 	public function __construct() {
 		$this->_config = array(
-			"api_key" => $_['SERUVER']['YAHOO_API_APP_KEY'],
+			"appid" => $_SERVER['YAHOO_API_APP_KEY'],
 		);
 	}
 
