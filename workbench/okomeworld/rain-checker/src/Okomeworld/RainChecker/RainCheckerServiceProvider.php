@@ -11,6 +11,10 @@ class RainCheckerServiceProvider extends ServiceProvider {
 	 */
 	protected $defer = false;
 
+	public function boot() {
+		$this->package('okomeworld/rain_checker');
+	}
+
 	/**
 	 * Register the service provider.
 	 *
@@ -30,7 +34,7 @@ class RainCheckerServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array();
+		return array('rain_checker');
 	}
 
 }
