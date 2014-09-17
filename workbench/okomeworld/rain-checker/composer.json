@@ -1,0 +1,20 @@
+{
+    "name": "okomeworld/rain-checker",
+    "description": "",
+    "authors": [
+        {
+            "name": "okomeworld",
+            "email": "rwmh0209@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Okomeworld\\RainChecker": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
