@@ -20,9 +20,8 @@ module.exports = function(grunt) {
 		},
 		concat : {
 			js : {
-				src : [//対象のJSファイルを記述
-				'public/js/sample01.js',
-				'public/js/sample02.js'
+				src : [
+				'public/js/src/*.js'
 				],
 				dest : 'public/js/app.js'
 			}
@@ -33,7 +32,7 @@ module.exports = function(grunt) {
 				tasks: ['sass']
 			},
 			js: {
-				files: ["public/js/*.js"],
+				files: ["public/js/src/*.js","public/js/*.js"],
 				tasks: ['concat','uglify']
 			}
 		}
