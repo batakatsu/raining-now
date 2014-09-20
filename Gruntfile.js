@@ -21,8 +21,8 @@ module.exports = function(grunt) {
 		concat : {
 			js : {
 				src : [//対象のJSファイルを記述
-				'js/sample01.js',
-				'js/sample02.js'
+				'public/js/sample01.js',
+				'public/js/sample02.js'
 				],
 				dest : 'public/js/app.js'
 			}
