@@ -19,6 +19,7 @@
     "ejs": "~0.8.5",
     "merge": "*",
     "httpsync": "*",
-    "validator": "*"
+    "validator": "*",
+    "date-utils": "*"
   }
 }
