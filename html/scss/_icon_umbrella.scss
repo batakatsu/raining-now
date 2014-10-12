@@ -1,0 +1,64 @@
+@charset "utf-8";
+/**
+ * 傘のアイコン
+ */
+
+.iconUmbrella{
+	position: absolute;
+	width: 150px;
+	height: 160px;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+}
+
+.iconUmbrella__handle{
+	@include setPrefix(border-radius, 10px);
+	position: absolute;
+	width: 10px;
+	height: 160px;
+	background-color: lighten(#0000ff,20%);
+	z-index: 10;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+
+	&:before{
+		position: absolute;
+		display: block;
+		width: 12px;
+		height: 10px;
+		content: '';
+		left: -1px;
+		bottom: 7px;
+		background-color: #0000ff;
+	}
+
+	&:after{
+		@include setPrefix(border-radius, 0px 0px 70px 70px);
+		position: absolute;
+		display: block;
+		width: 10px;
+		height: 10px;
+		content: '';
+		left: -1px;
+		bottom: -15px;
+		border-bottom: 12px solid #0000ff;
+		border-left: 12px solid #0000ff;
+		border-right: 12px solid #0000ff;
+	}
+}
+
+.iconUmbrella__body{
+	@include setPrefix(border-radius, 75px 75px 0 0);
+	position: absolute;
+	top: 12px;
+	left: 0;
+	display: block;
+	width: 150px;
+	height: 75px;
+	background-color: #0000ff;
+	z-index: 20;
+}
