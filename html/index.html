@@ -9,18 +9,22 @@
 <script src="js/lib/rainday.min.js"></script>
 <script>
 $(function(){
-	run()
+	var image = document.getElementById('background');
+	run(image);
+	img(image);
 });
 
-function run() {
-	var image = document.getElementById('background');
+function run(image) {
 	image.onload = function() {
 		var engine = new RainyDay({
 			image: this
 		});
 		//engine.rain([ [1, 2, 8000] ]);
-		engine.rain([ [3, 3, 0.88], [5, 5, 0.9], [6, 2, 1] ], 100);
+		engine.rain([ [1, 1, 2.88], [2, 2, 2.9], [3, 2, 3] ], 100);
 	};
+}
+
+function img(image){
 	image.crossOrigin = 'anonymous';
 	image.src = 'http://i.imgur.com/N7ETzFO.jpg';
 }
@@ -29,6 +33,27 @@ function run() {
 </head>
 <body>
 
-<img id="background" src="" alt="" />
+<div class="data">
+	<div class="data__precipitation"><span>50</span><br />mm/h</div>
+	<ul class="data__forecastPrecipitation">
+		<li>
+			<span>30</span>mm/h<br />1hours later
+		</li>
+		<li>
+			<span>10</span>mm/h<br />2hours later
+		</li>
+		<li>
+			<span>0</span>mm/h<br />3hours later
+		</li>
+	</ul>
+</div>
 
+<div class="bg"><img id="background" src="" alt="" /></div>
+
+<!--
+<div class="iconUmbrella">
+	<span class="iconUmbrella__handle"></span>
+	<span class="iconUmbrella__body"></span>
+</div>
+-->
 </body>
