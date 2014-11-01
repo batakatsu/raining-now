@@ -62,7 +62,13 @@
 			}
 		});
 
-		img(image, 'http://i.imgur.com/N7ETzFO.jpg');
+		var now = nowTime();
+
+		if( now > 6 && now < 18){
+			img(image, '/img/day.jpg');
+		}else{
+			img(image, '/img/night.jpg');
+		}
 	}
 
 	function errorCallback (error) {
@@ -83,6 +89,7 @@
 		console.error(message);
 	}
 
+	//降雨量をコントロール
 	function run(image, rainDrop, rainFall) {
 		image.onload = function() {
 			var engine = new RainyDay({
@@ -93,9 +100,17 @@
 		};
 	}
 
+	//画像のパスを管理
 	function img(image, src){
 		image.crossOrigin = 'anonymous';
 		image.src = src;
 	}
+
+	//現在時刻を取得
+	function nowTime(){
+		var date = new Date();
+		return date.getHours();
+	}
+
 }(jQuery);
 </script>
