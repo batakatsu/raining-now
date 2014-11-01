@@ -4,34 +4,39 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 <title>Document</title>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="css/style.css" />
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/lib/rainday.min.js"></script>
 <script>
 $(function(){
 	var image = document.getElementById('background');
-	run(image);
-	img(image);
+	//run(image, [ [1, 1, 2.88], [2, 2, 2.9], [3, 2, 3] ], 100);
+	img(image, 'http://i.imgur.com/N7ETzFO.jpg');
 });
 
-function run(image) {
+function run(image, rainDrop, rainFall) {
 	image.onload = function() {
 		var engine = new RainyDay({
 			image: this
 		});
 		//engine.rain([ [1, 2, 8000] ]);
-		engine.rain([ [1, 1, 2.88], [2, 2, 2.9], [3, 2, 3] ], 100);
+		engine.rain(rainDrop, rainFall);
 	};
 }
 
-function img(image){
+function img(image, src){
 	image.crossOrigin = 'anonymous';
-	image.src = 'http://i.imgur.com/N7ETzFO.jpg';
+	image.src = src;
 }
 
 </script>
 </head>
 <body>
+
+<div class="currentPosition">
+	現在地：京都市西京区山田北山田町
+</div>
 
 <div class="data">
 	<div class="data__precipitation"><span>50</span><br />mm/h</div>
