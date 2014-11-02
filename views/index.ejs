@@ -58,16 +58,15 @@
 			if(result === 0){
 
 			}else if(result > 0){
-				run(image, [ [1, 1, 2.88], [2, 2, 2.9], [3, 2, 3] ], 100);
+				exeRainday(image, [ [1, 1, 2.88], [2, 2, 2.9], [3, 2, 3] ], 100);
 			}
 		});
 
-		var now = nowTime();
-
+		var now = getNowTime();
 		if( now > 6 && now < 18){
-			img(image, '/img/day.jpg');
+			setImgSrc(image, '/img/day.jpg');
 		}else{
-			img(image, '/img/night.jpg');
+			setImgSrc(image, '/img/night.jpg');
 		}
 	}
 
@@ -90,7 +89,7 @@
 	}
 
 	//降雨量をコントロール
-	function run(image, rainDrop, rainFall) {
+	function exeRainday(image, rainDrop, rainFall) {
 		image.onload = function() {
 			var engine = new RainyDay({
 				image: this
@@ -101,13 +100,13 @@
 	}
 
 	//画像のパスを管理
-	function img(image, src){
+	function setImgSrc(image, src){
 		image.crossOrigin = 'anonymous';
 		image.src = src;
 	}
 
 	//現在時刻を取得
-	function nowTime(){
+	function getNowTime(){
 		var date = new Date();
 		return date.getHours();
 	}
