@@ -55,9 +55,7 @@
 		$.getJSON(RAIN_CHECKER_PATH, params, function(data) {
 			var result = data.Rainfall;
 			$('#result').html(result);
-			if(result === 0){
-
-			}else if(result > 0){
+			if(result > 0){
 				exeRainday(image, [ [1, 1, 2.88], [2, 2, 2.9], [3, 2, 3] ], 100);
 			}
 		});
