@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <p id="rain_fall">降水量を取得中...</p>
-  </body>
+<head>
+<title><%= title %></title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+	<div class="currentPosition">
+		現在地：京都市西京区山田北山田町
+	</div>
+
+	<div class="data">
+		<div class="data__precipitation"><span id='result'></span><br />mm/h</div>
+		<ul class="data__forecastPrecipitation">
+			<li>
+				<span>30</span>mm/h<br />1hours later
+			</li>
+			<li>
+				<span>10</span>mm/h<br />2hours later
+			</li>
+			<li>
+				<span>0</span>mm/h<br />3hours later
+			</li>
+		</ul>
+	</div>
+
+	<div class="bg"><img id="background" src="" alt="" /></div>
+</body>
 </html>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="/js/rainday.min.js"></script>
 <script type="text/javascript">
 !function($){
 	$(function(){
@@ -33,10 +51,21 @@
 			lng : position.coords.longitude
 		};
 
+		var image = document.getElementById('background');
 		$.getJSON(RAIN_CHECKER_PATH, params, function(data) {
-			var result_txt = '降水量: ' + data.Rainfall + ' mm/h';
-			$('#rain_fall').html(result_txt);
+			var result = data.Rainfall;
+			$('#result').html(result);
+			if(result > 0){
+				exeRainday(image, [ [1, 1, 2.88], [2, 2, 2.9], [3, 2, 3] ], 100);
+			}
 		});
+
+		var now = getNowTime();
+		if( now > 6 && now < 18){
+			setImgSrc(image, '/img/day.jpg');
+		}else{
+			setImgSrc(image, '/img/night.jpg');
+		}
 	}
 
 	function errorCallback (error) {
@@ -56,5 +85,29 @@
 
 		console.error(message);
 	}
+
+	//降雨量をコントロール
+	function exeRainday(image, rainDrop, rainFall) {
+		image.onload = function() {
+			var engine = new RainyDay({
+				image: this
+			});
+			//engine.rain([ [1, 2, 8000] ]);
+			engine.rain(rainDrop, rainFall);
+		};
+	}
+
+	//画像のパスを管理
+	function setImgSrc(image, src){
+		image.crossOrigin = 'anonymous';
+		image.src = src;
+	}
+
+	//現在時刻を取得
+	function getNowTime(){
+		var date = new Date();
+		return date.getHours();
+	}
+
 }(jQuery);
 </script>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Document</title>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/lib/rainday.min.js"></script>
+<script>
+$(function(){
+	var image = document.getElementById('background');
+	//run(image, [ [1, 1, 2.88], [2, 2, 2.9], [3, 2, 3] ], 100);
+	img(image, 'http://i.imgur.com/N7ETzFO.jpg');
+});
+
+function run(image, rainDrop, rainFall) {
+	image.onload = function() {
+		var engine = new RainyDay({
+			image: this
+		});
+		//engine.rain([ [1, 2, 8000] ]);
+		engine.rain(rainDrop, rainFall);
+	};
+}
+
+function img(image, src){
+	image.crossOrigin = 'anonymous';
+	image.src = src;
+}
+
+</script>
+</head>
+<body>
+
+<div class="currentPosition">
+	現在地：京都市西京区山田北山田町
+</div>
+
+<div class="data">
+	<div class="data__precipitation"><span>50</span><br />mm/h</div>
+	<ul class="data__forecastPrecipitation">
+		<li>
+			<span>30</span>mm/h<br />1hours later
+		</li>
+		<li>
+			<span>10</span>mm/h<br />2hours later
+		</li>
+		<li>
+			<span>0</span>mm/h<br />3hours later
+		</li>
+	</ul>
+</div>
+
+<div class="bg"><img id="background" src="" alt="" /></div>
+
+<!--
+<div class="iconUmbrella">
+	<span class="iconUmbrella__handle"></span>
+	<span class="iconUmbrella__body"></span>
+</div>
+-->
+</body>

@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+@mixin clearfix{
+	&:after{
+		display: block;
+		visibility: hidden;
+		clear: both;
+		height: 0;
+		content: "";
+	}
+}
+
+@mixin setPrefix($property, $value){
+	@each $prefix in -webkit-, -moz-, -ms-, -o-, '' {
+		#{$prefix}#{$property}: $value;
+	}
+}
